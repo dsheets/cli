@@ -2200,6 +2200,7 @@ _docker_daemon() {
 		--max-concurrent-downloads
 		--max-concurrent-uploads
 		--metrics-addr
+		--mount-point-plugin
 		--mtu
 		--oom-score-adjust
 		--pidfile -p
@@ -2270,6 +2271,10 @@ _docker_daemon() {
 			;;
 		--log-driver)
 			__docker_complete_log_drivers
+			return
+			;;
+                --mount-point-plugin)
+			__docker_complete_plugins_bundled --type MountPoint
 			return
 			;;
 		--storage-driver|-s)
@@ -4030,7 +4035,7 @@ _docker_plugin_ls() {
 	local key=$(__docker_map_key_of_current_option '--filter|-f')
 	case "$key" in
 		capability)
-			COMPREPLY=( $( compgen -W "authz ipamdriver logdriver metricscollector networkdriver volumedriver" -- "${cur##*=}" ) )
+			COMPREPLY=( $( compgen -W "authz ipamdriver logdriver metricscollector mountpoint networkdriver volumedriver" -- "${cur##*=}" ) )
 			return
 			;;
 		enabled)

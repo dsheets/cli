@@ -179,6 +179,7 @@ After activation, the plugin will then be sent events from this subsystem.
 Possible values are:
 
 * [`authz`](plugins_authorization.md)
+* [`mountpoint`](plugins_mount_point.md)
 * [`NetworkDriver`](plugins_network.md)
 * [`VolumeDriver`](plugins_volume.md)
 
